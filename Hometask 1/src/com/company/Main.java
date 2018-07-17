@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.lang.model.type.NullType;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -98,17 +99,19 @@ public class Main {
 
     public static int validator (String str) {
         int sum = 0;
-        if ((str.length() > 13) || (str.length() < 10) || (str.matches("[\\D]+")))
+        if ((str.length() > 13) || (str.length() < 10) || (str.matches("[\\D]+"))) {
             System.out.println("Не корректный номер!");
+        }
         else {
+
             for (int i = 0; i < str.length(); i++) {
                 if (Character.isDigit(str.charAt(i))) {
                     sum += Integer.parseInt(String.valueOf(str.charAt(i)));
                 }
             }
             System.out.println("Cумма чисел в строке" + " = " + sum);
-        }
             ret_sum_str(sum);
+        }
         return sum;
     }
 
