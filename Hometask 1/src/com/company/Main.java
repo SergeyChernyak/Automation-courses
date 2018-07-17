@@ -1,6 +1,5 @@
 package com.company;
 
-import javax.lang.model.type.NullType;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -24,9 +23,9 @@ public class Main {
                 switch (method) {
                     case 1: {
                         System.out.print("Введите количество элементов массива: ");
-                        int el_mas = scan.nextInt();
-                        System.out.println("Массив" + ": " + Arrays.toString(init_massive(el_mas)));
-                        System.out.println("Средее арифметическое" + ": " + get_average(init_massive(el_mas)));
+                        int elMas = scan.nextInt();
+                        System.out.println("Массив" + ": " + Arrays.toString(initMassive(elMas)));
+                        System.out.println("Средее арифметическое" + ": " + getAverage(initMassive(elMas)));
                         System.out.println("=======================================");
                         break;
                     }
@@ -58,9 +57,9 @@ public class Main {
         }
     }
 
-    public static int[] init_massive (int el_mas){
+    public static int[] initMassive(int elMas){
         Random random = new Random();
-        int mas[] = new int[el_mas];
+        int mas[] = new int[elMas];
         int i;
         for (i = 0; i < mas.length; i++) {
             mas[i] = random.nextInt(20);
@@ -68,7 +67,7 @@ public class Main {
         return mas;
     }
 
-    public static double get_average (int mas[]){
+    public static double getAverage(int mas[]){
         double sum = 0;
         double average = 0;
         for (int i = 0; i < mas.length; i++) {
@@ -103,37 +102,36 @@ public class Main {
             System.out.println("Не корректный номер!");
         }
         else {
-
             for (int i = 0; i < str.length(); i++) {
                 if (Character.isDigit(str.charAt(i))) {
                     sum += Integer.parseInt(String.valueOf(str.charAt(i)));
                 }
             }
             System.out.println("Cумма чисел в строке" + " = " + sum);
-            ret_sum_str(sum);
+            retSumStr(sum);
         }
         return sum;
     }
 
-    public static int ret_sum_str (int sum) {
-        int it_sum = 0;
-        String str_it_sum = "";
-        str_it_sum = Integer.toString(sum);
+    public static int retSumStr(int sum) {
+        int itSum = 0;
+        String strItSum = "";
+        strItSum = Integer.toString(sum);
         int j=1;
-        while (str_it_sum.length() > 1) {
-            it_sum = 0;
-            for (int i = 0; i < str_it_sum.length(); i++) {
-                it_sum += Integer.parseInt(String.valueOf(str_it_sum.charAt(i)));
+        while (strItSum.length() > 1) {
+            itSum = 0;
+            for (int i = 0; i < strItSum.length(); i++) {
+                itSum += Integer.parseInt(String.valueOf(strItSum.charAt(i)));
             }
-            str_it_sum = Integer.toString(it_sum);
-            System.out.println("Итерация " + j + " = " + str_it_sum);
+            strItSum = Integer.toString(itSum);
+            System.out.println("Итерация " + j + " = " + strItSum);
             j++;
         }
-        System.out.println("Результат = " + ret_result(it_sum));
-        return it_sum;
+        System.out.println("Результат = " + retResult(itSum));
+        return itSum;
     }
 
-    public static String ret_result (int sum3) {
+    public static String retResult(int sum3) {
         String res = "";
         if (sum3 == 1){
             res = "Один";
