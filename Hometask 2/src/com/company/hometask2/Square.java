@@ -1,21 +1,20 @@
-package com.company.shape;
+package com.company.hometask2;
 
 public class Square extends AbstractShape {
 
-    private double squareArea;
-    private double squarePerimeter;
-
     @Override
-    public void calculateArea() {
+    public double calculateArea() {
         double tempArea = Math.pow(randomDouble, 2);
-        squareArea = Math.round(tempArea * 100.0) / 100.0;
+        double squareArea = Math.round(tempArea * 100.0) / 100.0;
         System.out.println("Площадь квадрата = " + squareArea);
+        return squareArea;
     }
 
     @Override
-    public void calculatePerimeter() {
+    public double calculatePerimeter() {
         double tempPerimeter = 4 * randomDouble;
-        squarePerimeter = Math.round(tempPerimeter * 100.0) / 100.0;
+        double squarePerimeter = Math.round(tempPerimeter * 100.0) / 100.0;
         System.out.println("Периметр квадрата = " + squarePerimeter);
+        return squarePerimeter;
     }
 }

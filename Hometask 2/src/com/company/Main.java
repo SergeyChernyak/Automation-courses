@@ -1,10 +1,10 @@
 package com.company;
 
-import com.company.hometask.ShapeInterface;
-import com.company.shape.Circle;
-import com.company.shape.Rectangle;
-import com.company.shape.Square;
-import com.company.shape.Triangle;
+import com.company.hometask2.ShapeInterface;
+import com.company.hometask2.Circle;
+import com.company.hometask2.Rectangle;
+import com.company.hometask2.Square;
+import com.company.hometask2.Triangle;
 
 public class Main {
 

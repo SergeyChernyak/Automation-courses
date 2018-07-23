@@ -1,21 +1,20 @@
-package com.company.shape;
+package com.company.hometask2;
 
 public class Triangle extends AbstractShape {
 
-    private double triangleArea;
-    private double trianglePerimeter;
-
     @Override
-    public void calculateArea() {
+    public double calculateArea() {
         double tempArea = (Math.sqrt(3) / 4) * Math.pow(randomDouble, 2);
-        triangleArea = Math.round(tempArea * 100.0) / 100.0;
+        double triangleArea = Math.round(tempArea * 100.0) / 100.0;
         System.out.println("Площадь треугольника = " + triangleArea);
+        return triangleArea;
     }
 
     @Override
-    public void calculatePerimeter() {
+    public double calculatePerimeter() {
         double tempPerimeter = randomDouble + randomDouble + randomDouble;
-        trianglePerimeter = Math.round(tempPerimeter * 100.0) / 100.0;
+        double trianglePerimeter = Math.round(tempPerimeter * 100.0) / 100.0;
         System.out.println("Периметр треугольника = " + trianglePerimeter);
+        return trianglePerimeter;
     }
 }
