@@ -1,4 +1,4 @@
-package com.company.hometask2;
+package com.andersen.hometask2;
 
 import java.util.Random;
 

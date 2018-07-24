@@ -1,4 +1,4 @@
-package com.company;
+package com.andersen;
 
 import java.util.Arrays;
 import java.util.Random;

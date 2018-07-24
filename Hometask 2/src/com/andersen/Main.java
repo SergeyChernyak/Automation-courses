@@ -1,10 +1,10 @@
-package com.company;
+package com.andersen;
 
-import com.company.hometask2.ShapeInterface;
-import com.company.hometask2.Circle;
-import com.company.hometask2.Rectangle;
-import com.company.hometask2.Square;
-import com.company.hometask2.Triangle;
+import com.andersen.hometask2.ShapeInterface;
+import com.andersen.hometask2.Circle;
+import com.andersen.hometask2.Rectangle;
+import com.andersen.hometask2.Square;
+import com.andersen.hometask2.Triangle;
 
 public class Main {
 
