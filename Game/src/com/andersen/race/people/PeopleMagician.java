@@ -17,8 +17,15 @@ public class PeopleMagician extends Hero implements MagicBuf,MagicAttack {
 
     @Override
     public double magicAttack(Hero goal) {
-        System.out.println("Атака магией: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 4 HP)");
-        return goal.setHealth(goal.getHealht() - 4);
+        if (this.isBuffed()) {
+            System.out.println("Атака мечом от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 2 HP)");
+            setBuffed(false);
+            return goal.setHealth(goal.getHealht() - 2);
+        }
+        else {
+            System.out.println("Атака магией: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 4 HP)");
+            return goal.setHealth(goal.getHealht() - 4);
+        }
     }
 
     @Override
@@ -26,4 +33,5 @@ public class PeopleMagician extends Hero implements MagicBuf,MagicAttack {
         System.out.println("Наложение улучшения от " + setName(getName()) + "на персонажа: " + goal.setName(getName()) + " - (+10% HP)");
         return goal.setHealth((goal.getHealht()) + (goal.getHealht() * 0.10));
     }
+
 }

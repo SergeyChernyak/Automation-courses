@@ -1,5 +1,7 @@
 package com.andersen;
 
+import com.andersen.skills.AttackShotArrow;
+
 public abstract class Hero {
     private double health = 100;
     private boolean isBuffed;
@@ -33,8 +35,9 @@ public abstract class Hero {
         return isBuffed;
     }
 
-    public void setBuffed(boolean buffed) {
+    public boolean setBuffed(boolean buffed) {
         isBuffed = buffed;
+        return buffed;
     }
 
     public boolean isLive () {

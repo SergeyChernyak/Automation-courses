@@ -16,7 +16,14 @@ public class ElvesWarrior extends Hero implements AttackWarrior {
 
     @Override
     public double attackWarrior(Hero goal) {
-        System.out.println("Атака мечом от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 15 HP)");
-        return goal.setHealth(goal.getHealht() - 15);
+        if (this.isBuffed()) {
+            System.out.println("Атака мечом от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 7.5 HP)");
+            setBuffed(false);
+            return goal.setHealth(goal.getHealht() - 7.5);
+        }
+        else {
+            System.out.println("Атака мечом от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 15 HP)");
+            return goal.setHealth(goal.getHealht() - 15);
+        }
     }
 }

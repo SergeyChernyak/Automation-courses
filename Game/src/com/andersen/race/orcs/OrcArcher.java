@@ -18,13 +18,27 @@ public class OrcArcher extends Hero implements AttackShotArrow, SimpleAttackArch
 
     @Override
     public double attackShotArrow(Hero goal) {
-        System.out.println("Выстрел из лука от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 3 HP)");
-        return goal.setHealth(goal.getHealht() - 3);
+        if (isBuffed() == true) {
+            System.out.println("Выстрел из лука от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 6 HP)");
+            setBuffed(false);
+            return goal.setHealth(goal.getHealht() - 6);
+        }
+        else {
+            System.out.println("Выстрел из лука от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 3 HP)");
+            return goal.setHealth(goal.getHealht() - 3);
+        }
     }
 
     @Override
     public double simpleAttackArcher(Hero goal) {
-        System.out.println("Удар клинком от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 2 HP)");
-        return goal.setHealth(goal.getHealht() - 2);
+        if (isBuffed()) {
+            System.out.println("Выстрел из лука от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 4 HP)");
+            setBuffed(false);
+            return goal.setHealth(goal.getHealht() - 4);
+        }
+        else {
+            System.out.println("Выстрел из лука от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 2 HP)");
+            return goal.setHealth(goal.getHealht() - 2);
+        }
     }
 }

@@ -5,7 +5,7 @@ import com.andersen.Race;
 import com.andersen.skills.AttackWarrior;
 
 public class UndeadZombie extends Hero implements AttackWarrior {
-    public UndeadZombie(boolean isBuffed, Race race) {
+    public UndeadZombie() {
         super(false, Race.undead);
     }
 
@@ -16,7 +16,14 @@ public class UndeadZombie extends Hero implements AttackWarrior {
 
     @Override
     public double attackWarrior(Hero goal) {
-        System.out.println("Удар копьем от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 18 HP)");
-        return goal.setHealth(goal.getHealht() - 18);
+        if (isBuffed() == true) {
+            System.out.println("Удар копьем от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 36 HP)");
+            setBuffed(false);
+            return goal.setHealth(goal.getHealht() - 36);
+        }
+        else {
+            System.out.println("Удар копьем от: " + setName(getName()) + "по персонажу: " + goal.setName(getName()) + " - (урон 18 HP)");
+            return goal.setHealth(goal.getHealht() - 18);
+        }
     }
 }
