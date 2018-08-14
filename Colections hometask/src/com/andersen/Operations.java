@@ -1,4 +1,4 @@
-package com.andersen.colectionsMethods;
+package com.andersen;
 
 import java.util.List;
 import java.util.Set;

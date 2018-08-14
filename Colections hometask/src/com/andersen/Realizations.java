@@ -1,7 +1,5 @@
 package com.andersen;
 
-import com.andersen.colectionsMethods.Operations;
-
 import java.util.HashSet;
 import java.util.Set;
 
