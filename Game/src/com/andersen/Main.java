@@ -18,7 +18,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        ElvesArcher eArcher = new ElvesArcher();
+//        ElvesArcher eArcher = new ElvesArcher();
 //        ElvesMagican eMagican = new ElvesMagican();
 //        ElvesWarrior eWarrior = new ElvesWarrior();
 //
@@ -39,9 +39,8 @@ public class Main {
         //System.out.println(detachmentStrart.genereteElves());
 
         Skill start = new Skill();
+        start.generateSquads();
 
-
-        start.retMethodElves();
 
      //   start.retMethodOrcs();
     //  GenereteDetachment gen = new GenereteDetachment();

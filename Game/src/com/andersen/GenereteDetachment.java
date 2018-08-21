@@ -18,21 +18,26 @@ import java.util.List;
 import java.util.Random;
 
 public class GenereteDetachment {
-
-//        List<Hero> lightSide = new ArrayList<>();
-//        lightSide.add(personElves);
-//        lightSide.add(personPeople);
-//
-//        List<Hero> darkSide = new ArrayList<>();
-//        darkSide.add(personOrc);
-//        darkSide.add(personUndead);
-//
-//        Hero lightToStartGame = lightSide.get(randPerson.nextInt(lightSide.size()));
-//        Hero darkToSrartGame = darkSide.get(randPerson.nextInt(darkSide.size()));
         private Hero newElves;
+        private Hero newPeople;
+        private Hero newOcrs;
+        private Hero newUndead;
+
 
     public Hero getNewElves() {
         return newElves;
+    }
+
+    public Hero getNewPeople() {
+        return newPeople;
+    }
+
+    public Hero getNewOcrs() {
+        return newOcrs;
+    }
+
+    public Hero getNewUndead() {
+        return newUndead;
     }
 
     public Hero genereteElves () {
@@ -58,7 +63,6 @@ public class GenereteDetachment {
         if (personElves instanceof ElvesWarrior) {
             newElves = ((ElvesWarrior) personElves);
         }
-        System.out.println("Person from generete - " + newElves);
         return newElves;
     }
 
@@ -80,15 +84,15 @@ public class GenereteDetachment {
         Hero personOrc = darkOrcs.get(randPerson.nextInt(darkOrcs.size()));
 
         if (personOrc instanceof OrcShaman) {
-            personOrc = ((OrcShaman) personOrc);
+            newOcrs = ((OrcShaman) personOrc);
         }
         if (personOrc instanceof OrcArcher) {
-            personOrc = ((OrcArcher) personOrc);
+            newOcrs = ((OrcArcher) personOrc);
         }
-            if (personOrc instanceof OrcGoblin) {
-                personOrc = ((OrcGoblin) personOrc);
-            }
-        return personOrc;
+        if (personOrc instanceof OrcGoblin) {
+            newOcrs = ((OrcGoblin) personOrc);
+        }
+        return newOcrs;
     }
 
 
@@ -107,15 +111,16 @@ public class GenereteDetachment {
         Hero personPeople = lightPeople.get(randPerson.nextInt(lightPeople.size()));
 
         if (personPeople instanceof ElvesArcher) {
-            personPeople = ((PeopleMagician) personPeople);
+            newPeople = ((PeopleMagician) personPeople);
         }
-        if (personPeople instanceof ElvesMagican){
-            personPeople = ((PeopleCrossbowman) personPeople);
-            if (personPeople instanceof ElvesWarrior) {
-                personPeople = ((PeopleWarrior) personPeople);
-            }
+        if (personPeople instanceof ElvesMagican) {
+            newPeople = ((PeopleCrossbowman) personPeople);
         }
-        return personPeople;
+        if (personPeople instanceof ElvesWarrior) {
+            newPeople = ((PeopleWarrior) personPeople);
+        }
+
+        return newPeople;
     }
 
     public Hero genereteUndead () {
@@ -133,18 +138,18 @@ public class GenereteDetachment {
         Hero personUndead = darkUndead.get(randPerson.nextInt(darkUndead.size()));
 
         if (personUndead instanceof ElvesArcher) {
-            personUndead = ((UndeadNecromancer) personUndead);
+            newUndead = ((UndeadNecromancer) personUndead);
         }
-        if (personUndead instanceof ElvesMagican){
-            personUndead = ((UndeadHunter) personUndead);
-            if (personUndead instanceof ElvesWarrior) {
-                personUndead = ((UndeadZombie) personUndead);
-            }
+        if (personUndead instanceof ElvesMagican) {
+            newUndead = ((UndeadHunter) personUndead);
         }
-        return personUndead;
+        if (personUndead instanceof ElvesWarrior) {
+            newUndead = ((UndeadZombie) personUndead);
+        }
+        return newUndead;
     }
 
-    public Hero rr () {
+    public Hero lightSide () {
         Random randPerson = new Random();
 
         List<Hero> lightSide = new ArrayList<>();
@@ -154,6 +159,18 @@ public class GenereteDetachment {
         Hero personOnLightSide = lightSide.get(randPerson.nextInt(lightSide.size()));
 
         return personOnLightSide;
+    }
+
+    public Hero darkSide () {
+        Random randPerson = new Random();
+
+        List<Hero> darkSide = new ArrayList<>();
+        darkSide.add(genereteOrcs());
+        darkSide.add(genereteUndead());
+
+        Hero personOnDarkSide = darkSide.get(randPerson.nextInt(darkSide.size()));
+
+        return personOnDarkSide;
     }
 
 }
