@@ -2,17 +2,22 @@ package com.andersen.race.undead;
 
 import com.andersen.Hero;
 import com.andersen.Race;
+import com.andersen.ReadFile;
 import com.andersen.skills.AttackShotArrow;
 import com.andersen.skills.SimpleAttackArcher;
 
 public class UndeadHunter extends Hero implements AttackShotArrow, SimpleAttackArcher {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    ReadFile rf = new ReadFile();
+
     public UndeadHunter() {
         super(false, Race.undead);
     }
 
     @Override
     public String setName(String name) {
-        return super.setName("Охотник (Зомби)");
+        return super.setName(ANSI_PURPLE + "Охотник (Зомби) - " + rf.readFile() + " " + ANSI_RESET);
     }
 
     @Override

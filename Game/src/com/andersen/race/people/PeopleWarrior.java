@@ -2,16 +2,21 @@ package com.andersen.race.people;
 
 import com.andersen.Hero;
 import com.andersen.Race;
+import com.andersen.ReadFile;
 import com.andersen.skills.AttackWarrior;
 
 public class PeopleWarrior extends Hero implements AttackWarrior {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    ReadFile rf = new ReadFile();
+
     public PeopleWarrior() {
         super(false, Race.people);
     }
 
     @Override
     public String setName(String name) {
-        return super.setName("Воин (Человек)");
+        return super.setName(ANSI_BLUE + "Воин (Человек) - " + rf.readFile() + " " + ANSI_RESET);
     }
 
     @Override

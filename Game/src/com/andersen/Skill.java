@@ -20,22 +20,25 @@ public class Skill extends GenereteDetachment {
 
     Random random = new Random();
    // int setdetachment = random.nextInt(3-1) + 1;
+   int setRandDetachment = 1;
 
     public void generateSquads(){
-        int setRanddetachment = 1;
+
+
                 //random.nextInt(5-1) + 1;
+        System.out.println(setRandDetachment);
 
-        System.out.println(setRanddetachment);
-
-            if (setRanddetachment == 1) {
-                genereteElves();
-                genereteOrcs();
+            if (setRandDetachment == 1) {
+                for (int i = 0; i < 7; i++) {
+                    genereteElves();
+                    genereteOrcs();
+                }
                 System.out.println("Начинают игру - Эльфы и Орки");
                 while (getNewElves().isLive() && getNewOcrs().isLive()) {
                     retMethodElves();
                     retMethodOrcs();
                 }
-                if (getNewElves().isLive() == false) {
+                if (!getNewElves().isLive()) {
                     System.err.println("Отряд Эльфов проиграл (все умерли)");
                 }
                 else
@@ -43,21 +46,21 @@ public class Skill extends GenereteDetachment {
                     System.err.println("Отряд Орков проиграл (все умерли)");
                 }
             }
-            if (setRanddetachment == 2) {
+            if (setRandDetachment == 2) {
                 genereteElves();
                 genereteUndead();
                 System.out.println("Начинают игру - Эльфы и Нежить");
                 retMethodElves();
                 retMethodUndead();
             }
-            if (setRanddetachment == 3) {
+            if (setRandDetachment == 3) {
                 generetePeople();
                 genereteOrcs();
                 System.out.println("Начинают игру - Люди и Орки");
                 retMethodPeople();
                 retMethodOrcs();
             }
-            if (setRanddetachment == 4)
+            if (setRandDetachment == 4)
             {
                 generetePeople();
                 genereteUndead();
@@ -83,7 +86,7 @@ public class Skill extends GenereteDetachment {
         if (getNewElves() instanceof ElvesMagican) {
             switch (setdetachment) {
                 case 1: {
-                    return ((ElvesMagican) getNewElves()).magicBuf(getNewElves());
+                    return ((ElvesMagican) getNewElves()).magicBuf(getNewOcrs());
                 }
                 case 2: {
                     return ((ElvesMagican) getNewElves()).magicAttack(getNewOcrs());

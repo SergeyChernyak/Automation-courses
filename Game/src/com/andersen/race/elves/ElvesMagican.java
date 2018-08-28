@@ -2,10 +2,15 @@ package com.andersen.race.elves;
 
 import com.andersen.Hero;
 import com.andersen.Race;
+import com.andersen.ReadFile;
 import com.andersen.skills.MagicAttack;
 import com.andersen.skills.MagicBuf;
 
 public class ElvesMagican extends Hero implements MagicBuf, MagicAttack {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    ReadFile rf = new ReadFile();
 
     public ElvesMagican() {
         super(false, Race.elves);
@@ -13,7 +18,7 @@ public class ElvesMagican extends Hero implements MagicBuf, MagicAttack {
 
     @Override
     public String setName(String name) {
-        return super.setName("Маг (Эльф)");
+        return super.setName(ANSI_GREEN + "Маг (Эльф) - " + rf.readFile() + " " + ANSI_RESET);
     }
 
     @Override

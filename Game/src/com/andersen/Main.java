@@ -13,8 +13,6 @@ import com.andersen.race.undead.UndeadHunter;
 import com.andersen.race.undead.UndeadNecromancer;
 import com.andersen.race.undead.UndeadZombie;
 
-import java.util.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -33,37 +31,11 @@ public class Main {
 //        UndeadNecromancer uNecromant = new UndeadNecromancer();
 //        UndeadHunter uHunter = new UndeadHunter();
 //        UndeadZombie uZombie = new UndeadZombie();
-
         GenereteDetachment detachmentStrart = new GenereteDetachment();
-
         //System.out.println(detachmentStrart.genereteElves());
-
         Skill start = new Skill();
         start.generateSquads();
-
-
-     //   start.retMethodOrcs();
-    //  GenereteDetachment gen = new GenereteDetachment();
-//
-     //   gen.genereteElves();
-     ///   gen.sss();
-
-
-
-//        System.out.println(oMagican.magicBufDark(oArcher));
-//        System.out.println(oArcher.attackShotArrow(eArcher));
-//        System.out.println(oArcher.attackShotArrow(eArcher));
-//
-//        System.out.println(uNecromant.magicBufDark(eArcher));
-//        System.out.println(eArcher.attackShotArrow(oArcher));
-//        System.out.println(eArcher.attackShotArrow(oArcher));
-//
-//        System.out.println(uNecromant.magicBufDark(eArcher));
-//
-//        System.out.println(oArcher.attackShotArrow(uNecromant));
-//
-//        System.out.println(eArcher.attackShotArrow(oGoblin));
-//        System.out.println(eArcher.attackShotArrow(oGoblin));
-
     }
+
 }
+

@@ -2,10 +2,14 @@ package com.andersen.race.people;
 
 import com.andersen.Hero;
 import com.andersen.Race;
+import com.andersen.ReadFile;
 import com.andersen.skills.AttackShotArrow;
 import com.andersen.skills.SimpleAttackArcher;
 
 public class PeopleCrossbowman extends Hero implements AttackShotArrow, SimpleAttackArcher {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    ReadFile rf = new ReadFile();
 
     public PeopleCrossbowman() {
         super(false, Race.people);
@@ -13,7 +17,7 @@ public class PeopleCrossbowman extends Hero implements AttackShotArrow, SimpleAt
 
     @Override
     public String setName(String name) {
-        return super.setName("Арбалетчик (Человек)");
+        return super.setName(ANSI_BLUE + "Арбалетчик (Человек) - " + rf.readFile() + " " + ANSI_RESET);
     }
 
     @Override

@@ -2,17 +2,22 @@ package com.andersen.race.people;
 
 import com.andersen.Hero;
 import com.andersen.Race;
+import com.andersen.ReadFile;
 import com.andersen.skills.MagicAttack;
 import com.andersen.skills.MagicBuf;
 
 public class PeopleMagician extends Hero implements MagicBuf,MagicAttack {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    ReadFile rf = new ReadFile();
+
     public PeopleMagician() {
         super(false, Race.people);
     }
 
     @Override
     public String setName(String name) {
-        return super.setName("Маг (Человек)");
+        return super.setName(ANSI_BLUE + "Маг (Человек) - " + rf.readFile() + " " + ANSI_RESET);
     }
 
     @Override

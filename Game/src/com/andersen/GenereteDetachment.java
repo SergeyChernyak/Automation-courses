@@ -40,9 +40,11 @@ public class GenereteDetachment {
         return newUndead;
     }
 
+    //Skill sk = new Skill();
+
     public Hero genereteElves () {
         Random randPerson = new Random();
-        ArrayList<Hero> lightElves = new ArrayList<>();
+        List<Hero> lightElves = new ArrayList<>();
         lightElves.add(new ElvesMagican());
         lightElves.add(new ElvesArcher());
         lightElves.add(new ElvesArcher());
@@ -110,13 +112,13 @@ public class GenereteDetachment {
 
         Hero personPeople = lightPeople.get(randPerson.nextInt(lightPeople.size()));
 
-        if (personPeople instanceof ElvesArcher) {
+        if (personPeople instanceof PeopleMagician) {
             newPeople = ((PeopleMagician) personPeople);
         }
-        if (personPeople instanceof ElvesMagican) {
+        if (personPeople instanceof PeopleCrossbowman) {
             newPeople = ((PeopleCrossbowman) personPeople);
         }
-        if (personPeople instanceof ElvesWarrior) {
+        if (personPeople instanceof PeopleWarrior) {
             newPeople = ((PeopleWarrior) personPeople);
         }
 
@@ -137,13 +139,13 @@ public class GenereteDetachment {
 
         Hero personUndead = darkUndead.get(randPerson.nextInt(darkUndead.size()));
 
-        if (personUndead instanceof ElvesArcher) {
+        if (personUndead instanceof UndeadNecromancer) {
             newUndead = ((UndeadNecromancer) personUndead);
         }
-        if (personUndead instanceof ElvesMagican) {
+        if (personUndead instanceof UndeadHunter) {
             newUndead = ((UndeadHunter) personUndead);
         }
-        if (personUndead instanceof ElvesWarrior) {
+        if (personUndead instanceof UndeadZombie) {
             newUndead = ((UndeadZombie) personUndead);
         }
         return newUndead;
