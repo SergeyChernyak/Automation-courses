@@ -1,32 +1,32 @@
 
-select country.name as `country name`, count(distinct region.id) as `regions count`
+SELECT country.name AS `country name`, count(distinct region.id) AS `regions count`
 FROM country
-inner join 
+INNER JOIN 
 region 
-on country.id = region.country_id
-group by country.name
-order by count(region.id) desc
-limit 5;
+ON country.id = region.country_id
+GROUP BY country.name
+ORDER BY count(region.id) DESC
+LIMIT 5;
 
 
-select country.name as `country name`, count(city.id) as `cities count`
+SELECT country.name AS `country name`, count(city.id) AS `cities count`
 FROM country
-inner join 
+INNER JOIN 
 region 
-on country.id = region.country_id
-inner join city
-on region.id = city.region_id
-group by country.name
-order by count(city.id) desc
-limit 5;
+ON country.id = region.country_id
+INNER JOIN city
+ON region.id = city.region_id
+GROUP BY country.name
+ORDER BY count(city.id) DESC
+LIMIT 5;
 
 
-select country.name as `country name`, count(distinct region.id) as `regions count`, count(city.id) as `cities count` 
-from country
-inner join 
+SELECT country.name AS `country name`, count(distinct region.id) AS `regions count`, count(city.id) AS `cities count` 
+FROM country
+INNER JOIN 
 region
-on region.country_id = country.id 
-inner join city
-on city.region_id = region.id
-group by country.name
-order by count(distinct region.id) desc, count(city.id) desc;
+ON region.country_id = country.id 
+INNER JOIN city
+ON city.region_id = region.id
+GROUP BY country.name
+ORDER BY count(distinct region.id) DESC, count(city.id) DESC;
