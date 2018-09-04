@@ -40,8 +40,6 @@ public class GenereteDetachment {
         return newUndead;
     }
 
-    //Skill sk = new Skill();
-
     public Hero genereteElves () {
         Random randPerson = new Random();
         List<Hero> lightElves = new ArrayList<>();

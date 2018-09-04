@@ -13,23 +13,53 @@ import com.andersen.race.undead.UndeadHunter;
 import com.andersen.race.undead.UndeadNecromancer;
 import com.andersen.race.undead.UndeadZombie;
 
+import java.util.List;
 import java.util.Random;
 
 public class Skill extends GenereteDetachment {
     GenereteDetachment genereteDetachment = new GenereteDetachment();
 
     Random random = new Random();
-   // int setdetachment = random.nextInt(3-1) + 1;
-   int setRandDetachment = 1;
+    int setRandDetachment = random.nextInt(5-1) + 1;
+            //random.nextInt(3-1) + 1;
+  // int setdetachment = 1;
+
+   public Hero goalLightSide () {
+       if (setRandDetachment == 1) {
+           return getNewElves();
+       }
+       else if (setRandDetachment == 2) {
+            return getNewElves();
+       } else if (setRandDetachment == 3) {
+           return getNewPeople();
+       } else if (setRandDetachment == 4) {
+           return getNewPeople();
+       } else
+            return goalLightSide();
+   }
+
+    public Hero goalDarkSide () {
+        if (setRandDetachment == 1) {
+            return getNewOcrs();
+        }
+        else if (setRandDetachment == 2) {
+            return getNewUndead();
+        } else if (setRandDetachment == 3) {
+            return getNewOcrs();
+        } else if (setRandDetachment == 4) {
+            return getNewUndead();
+        } else
+            return goalDarkSide();
+    }
+
 
     public void generateSquads(){
-
 
                 //random.nextInt(5-1) + 1;
         System.out.println(setRandDetachment);
 
             if (setRandDetachment == 1) {
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 8; i++) {
                     genereteElves();
                     genereteOrcs();
                 }
@@ -46,144 +76,181 @@ public class Skill extends GenereteDetachment {
                     System.err.println("Отряд Орков проиграл (все умерли)");
                 }
             }
+
             if (setRandDetachment == 2) {
-                genereteElves();
-                genereteUndead();
+                for (int i = 0; i < 8; i++) {
+                    genereteElves();
+                    genereteUndead();
+                }
                 System.out.println("Начинают игру - Эльфы и Нежить");
-                retMethodElves();
-                retMethodUndead();
+                while (getNewElves().isLive() && getNewUndead().isLive()) {
+                    retMethodElves();
+                    retMethodUndead();
+                }
+                if (!getNewElves().isLive()) {
+                    System.err.println("Отряд Эльфов проиграл (все умерли)");
+                }
+                else
+                {
+                    System.err.println("Отряд Нежити проиграл (все умерли)");
+                }
             }
+
             if (setRandDetachment == 3) {
-                generetePeople();
-                genereteOrcs();
+                for (int i = 0; i < 8; i++) {
+                    generetePeople();
+                    genereteOrcs();
+                }
                 System.out.println("Начинают игру - Люди и Орки");
-                retMethodPeople();
-                retMethodOrcs();
+                while (getNewPeople().isLive() && getNewOcrs().isLive()) {
+                    retMethodPeople();
+                    retMethodOrcs();
+                }
+                if (!getNewPeople().isLive()) {
+                    System.err.println("Отряд Людей проиграл (все умерли)");
+                }
+                else
+                {
+                    System.err.println("Отряд Орков проиграл (все умерли)");
+                }
             }
+
+
             if (setRandDetachment == 4)
             {
-                generetePeople();
-                genereteUndead();
+                for (int i = 0; i < 8; i++) {
+                    generetePeople();
+                    genereteUndead();
+                }
                 System.out.println("Начинают игру - Люди и Нежить");
-                retMethodPeople();
-                retMethodUndead();
+                while (getNewPeople().isLive() && getNewUndead().isLive()) {
+                    retMethodPeople();
+                    retMethodUndead();
+                }
+                if (!getNewPeople().isLive()) {
+                    System.err.println("Отряд Людей проиграл (все умерли)");
+                }
+                else
+                {
+                    System.err.println("Отряд Нежити проиграл (все умерли)");
+                }
             }
     }
 
     public double retMethodElves () {
-        int setdetachment = random.nextInt(3-1) + 1;
+        int setdetachmentElves = random.nextInt(3-1) + 1;
         if (getNewElves() instanceof ElvesArcher) {
-            switch (setdetachment) {
+            switch (setdetachmentElves) {
                 case 1: {
-                    return ((ElvesArcher) getNewElves()).attackShotArrow(getNewOcrs());
+                    return ((ElvesArcher) getNewElves()).attackShotArrow(goalDarkSide());
                 }
                 case 2: {
-                    return ((ElvesArcher) getNewElves()).simpleAttackArcher(getNewOcrs());
+                    return ((ElvesArcher) getNewElves()).simpleAttackArcher(goalDarkSide());
                 }
             }
         }
         else
         if (getNewElves() instanceof ElvesMagican) {
-            switch (setdetachment) {
+            switch (setdetachmentElves) {
                 case 1: {
-                    return ((ElvesMagican) getNewElves()).magicBuf(getNewOcrs());
+                    return ((ElvesMagican) getNewElves()).magicBuf(goalDarkSide());
                 }
                 case 2: {
-                    return ((ElvesMagican) getNewElves()).magicAttack(getNewOcrs());
+                    return ((ElvesMagican) getNewElves()).magicAttack(goalDarkSide());
                 }
             }
         }
         if (getNewElves() instanceof ElvesWarrior) {
-            return ((ElvesWarrior) getNewElves()).attackWarrior(getNewOcrs());
+            return ((ElvesWarrior) getNewElves()).attackWarrior(goalDarkSide());
         }
         else
             return 0;
     }
 
     public Object retMethodOrcs () {
-        int setdetachment = random.nextInt(3-1) + 1;
+        int setdetachmentOrcs = random.nextInt(3-1) + 1;
         if (getNewOcrs() instanceof OrcArcher) {
-            switch (setdetachment) {
+            switch (setdetachmentOrcs) {
                 case 1: {
-                    return ((OrcArcher) getNewOcrs()).attackShotArrow(genereteElves()); }
+                    return ((OrcArcher) getNewOcrs()).attackShotArrow(goalLightSide()); }
                 case 2: {
-                    return ((OrcArcher) getNewOcrs()).simpleAttackArcher(genereteElves());
+                    return ((OrcArcher) getNewOcrs()).simpleAttackArcher(goalLightSide());
                 }
             }
         }
         else
         if (getNewOcrs() instanceof OrcShaman) {
-            switch (setdetachment) {
+            switch (setdetachmentOrcs) {
                 case 1: {
-                    return ((OrcShaman) getNewOcrs()).magicBufDark(genereteOrcs());
+                    return ((OrcShaman) getNewOcrs()).magicBufDark(goalLightSide());
                 }
                 case 2: {
-                    return ((OrcShaman) getNewOcrs()).magicAttack(genereteElves());
+                    return ((OrcShaman) getNewOcrs()).magicAttack(goalLightSide());
                 }
             }
         }
         if (getNewOcrs() instanceof OrcGoblin) {
-            return ((OrcGoblin) getNewOcrs()).attackWarrior(genereteElves());
+            return ((OrcGoblin) getNewOcrs()).attackWarrior(goalLightSide());
         }
         else
             return 0;
     }
 
     public double retMethodPeople () {
-        int setdetachment = random.nextInt(3-1) + 1;
+        int setdetachmentPeople = random.nextInt(3-1) + 1;
         if (getNewPeople() instanceof PeopleCrossbowman) {
-            switch (setdetachment) {
+            switch (setdetachmentPeople) {
                 case 1: {
-                    return ((PeopleCrossbowman) getNewPeople()).attackShotArrow(genereteOrcs());
+                    return ((PeopleCrossbowman) getNewPeople()).attackShotArrow(goalDarkSide());
                 }
                 case 2: {
-                    return ((PeopleCrossbowman) getNewPeople()).simpleAttackArcher(genereteOrcs());
+                    return ((PeopleCrossbowman) getNewPeople()).simpleAttackArcher(goalDarkSide());
                 }
             }
         }
         else
         if (getNewPeople() instanceof PeopleMagician) {
-            switch (setdetachment) {
+            switch (setdetachmentPeople) {
                 case 1: {
-                    return ((PeopleMagician) getNewPeople()).magicBuf(generetePeople());
+                    return ((PeopleMagician) getNewPeople()).magicBuf(goalDarkSide());
                 }
                 case 2: {
-                    return ((PeopleMagician) getNewPeople()).magicAttack(genereteOrcs());
+                    return ((PeopleMagician) getNewPeople()).magicAttack(goalDarkSide());
                 }
             }
         }
         if (getNewPeople() instanceof PeopleWarrior) {
-            return ((PeopleWarrior) getNewPeople()).attackWarrior(genereteOrcs());
+            return ((PeopleWarrior) getNewPeople()).attackWarrior(goalDarkSide());
         }
         else
             return 0;
     }
 
     public Object retMethodUndead () {
-        int setdetachment = random.nextInt(3-1) + 1;
+        int setdetachmentUndead = random.nextInt(3-1) + 1;
         if (getNewUndead() instanceof UndeadHunter) {
-            switch (setdetachment) {
+            switch (setdetachmentUndead) {
                 case 1: {
-                    return ((UndeadHunter) getNewUndead()).attackShotArrow(genereteElves());
+                    return ((UndeadHunter) getNewUndead()).attackShotArrow(goalLightSide());
                 }
                 case 2: {
-                    return ((UndeadHunter) getNewUndead()).simpleAttackArcher(genereteElves());
+                    return ((UndeadHunter) getNewUndead()).simpleAttackArcher(goalLightSide());
                 }
             }
         }
         else
         if (getNewUndead() instanceof UndeadNecromancer) {
-            switch (setdetachment) {
+            switch (setdetachmentUndead) {
                 case 1: {
-                    return ((UndeadNecromancer) getNewUndead()).magicBufDark(genereteElves());
+                    return ((UndeadNecromancer) getNewUndead()).magicBufDark(goalLightSide());
                 }
                 case 2: {
-                    return ((UndeadNecromancer) getNewUndead()).magicAttack(genereteElves());
+                    return ((UndeadNecromancer) getNewUndead()).magicAttack(goalLightSide());
                 }
             }
         }
         if (getNewUndead() instanceof UndeadZombie) {
-            return ((UndeadZombie) getNewUndead()).attackWarrior(genereteElves());
+            return ((UndeadZombie) getNewUndead()).attackWarrior(goalLightSide());
         }
         else
             return 0;

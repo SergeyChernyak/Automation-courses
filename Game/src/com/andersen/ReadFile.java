@@ -20,7 +20,7 @@ public class ReadFile {
         return lines.get(randomIndexStr);
     }
 
-    private int getRandomNumber(int min, int max) {
+    private int getRandomNumber (int min, int max) {
         return min + (int) (Math.random() * ((max - min)));
     }
 

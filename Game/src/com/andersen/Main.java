@@ -33,6 +33,7 @@ public class Main {
 //        UndeadZombie uZombie = new UndeadZombie();
         GenereteDetachment detachmentStrart = new GenereteDetachment();
         //System.out.println(detachmentStrart.genereteElves());
+
         Skill start = new Skill();
         start.generateSquads();
     }
