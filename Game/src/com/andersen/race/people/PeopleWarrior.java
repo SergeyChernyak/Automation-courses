@@ -2,13 +2,13 @@ package com.andersen.race.people;
 
 import com.andersen.Hero;
 import com.andersen.Race;
-import com.andersen.ReadFile;
+import com.andersen.ReadRandomName;
 import com.andersen.skills.AttackWarrior;
 
 public class PeopleWarrior extends Hero implements AttackWarrior {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLUE = "\u001B[34m";
-    ReadFile rf = new ReadFile();
+    ReadRandomName rf = new ReadRandomName();
 
     public PeopleWarrior() {
         super(false, Race.people);
@@ -16,7 +16,7 @@ public class PeopleWarrior extends Hero implements AttackWarrior {
 
     @Override
     public String setName(String name) {
-        return super.setName(ANSI_BLUE + "Воин (Человек) - " + rf.readFile() + " " + ANSI_RESET);
+        return super.setName(ANSI_BLUE + "Воин (Человек) - " + rf.readNameFromFile() + " " + ANSI_RESET);
     }
 
     @Override

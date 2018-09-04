@@ -6,11 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ReadFile {
+public class ReadRandomName {
     List<String> lines = null;
     String file = "D:\\Work\\AQA courses\\Game\\name.txt";
 
-    public String readFile () {
+    public String readNameFromFile() {
         try {
             lines = Files.readAllLines(Paths.get(file), StandardCharsets.UTF_8);
         } catch (IOException e) {

@@ -2,14 +2,14 @@ package com.andersen.race.orcs;
 
 import com.andersen.Hero;
 import com.andersen.Race;
-import com.andersen.ReadFile;
+import com.andersen.ReadRandomName;
 import com.andersen.skills.MagicAttack;
 import com.andersen.skills.MagicBuffDark;
 
 public class OrcShaman extends Hero implements MagicAttack, MagicBuffDark {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-    ReadFile rf = new ReadFile();
+    ReadRandomName rf = new ReadRandomName();
 
     public OrcShaman() {
         super(false, Race.orcs);
@@ -17,7 +17,7 @@ public class OrcShaman extends Hero implements MagicAttack, MagicBuffDark {
 
     @Override
     public String setName(String name) {
-        return super.setName(ANSI_YELLOW + "Шаман (Орк) - " + rf.readFile() + " " + ANSI_RESET);
+        return super.setName(ANSI_YELLOW + "Шаман (Орк) - " + rf.readNameFromFile() + " " + ANSI_RESET);
     }
 
     @Override

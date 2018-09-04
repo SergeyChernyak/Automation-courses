@@ -2,13 +2,13 @@ package com.andersen.race.elves;
 
 import com.andersen.Hero;
 import com.andersen.Race;
-import com.andersen.ReadFile;
+import com.andersen.ReadRandomName;
 import com.andersen.skills.AttackShotArrow;
 import com.andersen.skills.SimpleAttackArcher;
 
 public class ElvesArcher extends Hero implements AttackShotArrow, SimpleAttackArcher {
 
-    ReadFile rf = new ReadFile();
+    ReadRandomName rf = new ReadRandomName();
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
@@ -18,7 +18,7 @@ public class ElvesArcher extends Hero implements AttackShotArrow, SimpleAttackAr
 
     @Override
     public String setName(String name) {
-        return super.setName(ANSI_GREEN + "Лучник (Эльф) - " + rf.readFile() + " " + ANSI_RESET);
+        return super.setName(ANSI_GREEN + "Лучник (Эльф) - " + rf.readNameFromFile() + " " + ANSI_RESET);
     }
 
     @Override

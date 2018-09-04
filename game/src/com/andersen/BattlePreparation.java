@@ -16,7 +16,7 @@ import com.andersen.race.undead.UndeadZombie;
 import java.util.List;
 import java.util.Random;
 
-public class Skill extends GenereteDetachment {
+public class BattlePreparation extends GenereteDetachment {
     GenereteDetachment genereteDetachment = new GenereteDetachment();
 
     Random random = new Random();

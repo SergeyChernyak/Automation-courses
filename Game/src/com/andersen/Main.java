@@ -1,18 +1,5 @@
 package com.andersen;
 
-import com.andersen.race.elves.ElvesArcher;
-import com.andersen.race.elves.ElvesMagican;
-import com.andersen.race.elves.ElvesWarrior;
-import com.andersen.race.orcs.OrcArcher;
-import com.andersen.race.orcs.OrcGoblin;
-import com.andersen.race.orcs.OrcShaman;
-import com.andersen.race.people.PeopleCrossbowman;
-import com.andersen.race.people.PeopleMagician;
-import com.andersen.race.people.PeopleWarrior;
-import com.andersen.race.undead.UndeadHunter;
-import com.andersen.race.undead.UndeadNecromancer;
-import com.andersen.race.undead.UndeadZombie;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -34,7 +21,7 @@ public class Main {
         GenereteDetachment detachmentStrart = new GenereteDetachment();
         //System.out.println(detachmentStrart.genereteElves());
 
-        Skill start = new Skill();
+        BattlePreparation start = new BattlePreparation();
         start.generateSquads();
     }
 
