@@ -1,6 +1,6 @@
 package com.andersen.hometask2;
 
-public class Circle extends AbstractShape {
+public class Circle extends com.andersen.hometask2.AbstractShape {
 
     @Override
     public double calculateArea() {
