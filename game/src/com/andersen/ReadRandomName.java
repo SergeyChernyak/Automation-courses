@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReadRandomName {
     List<String> lines = null;
-    String file = "D:\\Work\\AutomationMaster\\Automation-courses\\game\\src\\name.txt";
+    String file = "./src/name.txt";
 
     public String readNameFromFile() {
         try {
