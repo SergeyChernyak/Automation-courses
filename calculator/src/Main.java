@@ -8,27 +8,55 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+        boolean breakPoint = true;
+        while (true) {
+            System.out.println("Введите два числа и арифметическую операцию для выполненния: ");
+            String values = scanner.nextLine();
 
-        System.out.println("Введите два числа и арифметическую операцию для выполненния: ");
-        String values = scanner.nextLine();
-        System.out.println(calculateResult(getValuesFromStr(values), getOperationFromStr(values)));
+            if (checkCountValuesFromStr(values) > 2 | checkCountValuesFromStr(values) == 1 | checkCountValuesFromStr(values) == 0) {
+                System.err.println("Необходимо ввести только ДВА числа!");
+            } else if (checkCountMathematicOperation(values) > 1 | checkCountMathematicOperation(values) == 0) {
+                System.err.println("Необходимо ввести только ОДИН математический оператор ('/,', '*', '+', '-')!");
+            } else {
+                System.out.println("Результат вычисления = " + calculateResult(getValuesFromStr(values), getOperationFromStr(values)));
+                breakPoint = false;
+                break;
+            }
+        }
+    }
+
+    public static int checkCountValuesFromStr(String values) {
+        int count=0;
+        String strWithoutSpace = values.replace(" " ,"");
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(strWithoutSpace);
+        while (m.find()) {
+            count++;
+        }
+        return count;
+    }
+
+    public static int checkCountMathematicOperation (String values) {
+        int count=0;
+        String strWithoutSpace = values.replace(" " ,"");
+
+        Pattern p = Pattern.compile("[+-/*]");
+        Matcher m = p.matcher(strWithoutSpace);
+        while (m.find()) {
+            count++;
+        }
+        return count;
     }
 
     public static BigDecimal[] getValuesFromStr (String values) {
 
             BigDecimal[] mas = new BigDecimal[values.length()];
             String strWithoutSpace = values.replace(" " ,"");
-
-            //Pattern p = Pattern.compile("-?\\d+");
             Pattern p = Pattern.compile("\\d+");
             Matcher m = p.matcher(strWithoutSpace);
-
             for (int i = 0; m.find(); i++) {
                     mas[i] = BigDecimal.valueOf(Double.parseDouble(m.group()));
                 }
-//            if (mas.length>3) {
-//                return
-//            } else
         return mas;
     }
 
@@ -37,7 +65,6 @@ public class Main {
         String masOperators = "";
 
         Pattern p = Pattern.compile("[+-/*]");
-                //("(\\+|\\-|\\*|\\/|\\(|\\)|(\\d+\\.?\\d*))");
         Matcher m = p.matcher(strWithoutSpace1);
         for (; m.find(); ) {
             masOperators = m.group();
@@ -61,5 +88,3 @@ public class Main {
     }
 
 }
-
-
