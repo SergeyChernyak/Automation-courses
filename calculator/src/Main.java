@@ -14,10 +14,13 @@ public class Main {
             String values = scanner.nextLine();
 
             if (checkCountValuesFromStr(values) > 2 | checkCountValuesFromStr(values) == 1 | checkCountValuesFromStr(values) == 0) {
-                System.err.println("Необходимо ввести только ДВА числа!");
-            } else if (checkCountMathematicOperation(values) > 1 | checkCountMathematicOperation(values) == 0) {
-                System.err.println("Необходимо ввести только ОДИН математический оператор ('/,', '*', '+', '-')!");
-            } else {
+                System.err.println("Необходимо ввести ДВА числа!");
+            } else if (checkCountOperation(values) > 1 | checkCountOperation(values) == 0) {
+                System.err.println("Необходимо ввести ОДИН математический оператор ('/,', '*', '+', '-')!");
+            } else if (BigDecimal.ZERO.compareTo(BigDecimal.valueOf(0)) == 0 & getOperationFromStr(values).equals("/")) {
+                System.err.println("Нельзя делить на ноль!");
+            } else
+                {
                 System.out.println("Результат вычисления = " + calculateResult(getValuesFromStr(values), getOperationFromStr(values)));
                 breakPoint = false;
                 break;
@@ -36,7 +39,7 @@ public class Main {
         return count;
     }
 
-    public static int checkCountMathematicOperation (String values) {
+    public static int checkCountOperation(String values) {
         int count=0;
         String strWithoutSpace = values.replace(" " ,"");
 
@@ -63,7 +66,6 @@ public class Main {
     public static String getOperationFromStr (String str) {
         String strWithoutSpace1 = str.replace(" " ,"");
         String masOperators = "";
-
         Pattern p = Pattern.compile("[+-/*]");
         Matcher m = p.matcher(strWithoutSpace1);
         for (; m.find(); ) {
